@@ -1,53 +1,43 @@
+from lib2to3.pytree import Base
+from statistics import mode
 import uvicorn
 import pickle
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-
-class Music(BaseModel):
-    acousticness: float
-    danceability: float
-    energy: float
-    instrumentalness: float
-    liveness: float
-    speechiness: float
-    tempo: float
-    valence: float
-
-
 app = FastAPI()
 
-with open("./ml-model/music-genre.pkl", "rb") as f:
-    model = pickle.load(f)
+
+
+class Sentence(BaseModel):
+    sentence: str
+
+with open("./ml-model/ibm_smt.pkl", "rb") as f:
+    ibm_model = pickle.load(f)
 
 
 @app.get('/')
 def index():
-    return {'message': 'This is the homepage of the API '}
+    return {'message': 'This is the homepage of the Statistical Machine Translation '}
 
 
-@app.post('/prediction')
-def get_music_category(data: Music):
-    received = data.dict()
-    acousticness = received['acousticness']
-    danceability = received['danceability']
-    energy = received['energy']
-    instrumentalness = received['instrumentalness']
-    liveness = received['liveness']
-    speechiness = received['speechiness']
-    tempo = received['tempo']
-    valence = received['valence']
-    pred_name = model.predict([[acousticness, danceability, energy,
-                                instrumentalness, liveness, speechiness, tempo, valence]]).tolist()[0]
-    return {'prediction': pred_name}
 
+@app.post('/predictSentence')
+def get_translation(data:Sentence):
+    print(type(data))
+    fr_sent =data.sentence.split()
+    tr_sent = []
+    for w in fr_sent:
+        probs = ibm_model.translation_table[w]
+        if(len(probs)==0):
+            continue
+        sorted_words = sorted([(k,v) for k, v in probs.items()],key=lambda x: x[1], reverse=True)
+        top_word = sorted_words[1][0]
+        if top_word is not None:
+            tr_sent.append(top_word)
 
-@app.get('/predict')
-def get_cat(acousticness: float, danceability: float, energy: float, instrumentalness: float, liveness: float, speechiness: float, tempo: float, valence: float):
-    pred_name = model.predict([[acousticness, danceability, energy,
-            instrumentalness, liveness, speechiness, tempo, valence]]).tolist()[0]
-    return {'prediction': pred_name}
-
+    result=" ".join(tr_sent)
+    return {'prediction': result}
 
 
 if __name__ == '__main__':
