@@ -1,0 +1,5 @@
+dill==0.3.4
+numpy==1.22.2
+fastapi
+pydantic==1.9.0
+nltk

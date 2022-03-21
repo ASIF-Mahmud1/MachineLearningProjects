@@ -3,6 +3,7 @@ from statistics import mode
 import uvicorn
 import pickle
 from fastapi import FastAPI
+
 from pydantic import BaseModel
 
 app = FastAPI()
