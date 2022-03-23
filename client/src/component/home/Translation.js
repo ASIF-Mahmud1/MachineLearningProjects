@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text,View, StyleSheet,TouchableOpacity, TextInput} from 'react-native'
+import {Text,View, StyleSheet,TouchableOpacity, TextInput, Clipboard} from 'react-native'
 import {  Ionicons ,AntDesign ,MaterialIcons} from '@expo/vector-icons';
 
 const Translation=({translate})=>{
@@ -13,7 +13,7 @@ const Translation=({translate})=>{
             </View>
             <TextInput value={translate} placeholder='Translate to English'  multiline={true}  style={styles.input} selectTextOnFocus={false}  editable={false} />
             <View  style={styles.topRight}>
-                   <TouchableOpacity>
+                   <TouchableOpacity onPress={()=>{Clipboard.setString(translate)}} >
                       <Ionicons name="copy-outline" size={24} color="black" />
                       {/* <Ionicons name="copy" size={24} color="black" /> */}
                    </TouchableOpacity>
