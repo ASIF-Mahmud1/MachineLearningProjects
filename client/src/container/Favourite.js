@@ -1,9 +1,11 @@
 import React, { useState ,useEffect } from 'react';
-import { View,Text ,StyleSheet, TextInput, TouchableOpacity} from 'react-native'
+import { View,Text ,StyleSheet, TextInput, TouchableOpacity, ScrollView} from 'react-native'
 import { getData } from '../helper/helper';
 import { useIsFocused } from '@react-navigation/native';
 import { Feather ,Entypo  } from '@expo/vector-icons';
 import { getSuggestions } from '../helper/helper';
+import Item from '../component/favourite/Item';
+
 const Favourite = () => {
     const isFoucsed = useIsFocused()
     const [text, onChangeText] = React.useState('');
@@ -55,6 +57,22 @@ const Favourite = () => {
                     </TouchableOpacity>
                 </View>
             </View>
+
+            <ScrollView style={{ margin: 20 }}>
+
+                {
+                    search.map((item) => {
+                        return (
+                            <Item  details={item} />
+                        )
+                    })
+                }
+                
+      
+                {
+                    search.length===0 && <Text style={styles.text}>No Matching Result Found</Text>
+                }
+            </ScrollView>
         </View>
     )
 }
@@ -64,7 +82,6 @@ const styles = StyleSheet.create({
      display:'flex',
      flexGrow:1,   
      backgroundColor:'white',
-    // paddingHorizontal:20,
     
     },
     textInput: { 
@@ -81,27 +98,15 @@ const styles = StyleSheet.create({
         padding: 10 ,
         width:300
     },
+    text:{
+        fontSize: 20,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'black',
+      },
     
 })
 
 
 export default Favourite
-
-
-
-/*  
-
-
-
-<TextInput style={styles.textInput} placeholder="Search By Name" onChangeText={onChangeText} value={text}
-/>
-
-
-
-
-
-
-
-
-
-    */
