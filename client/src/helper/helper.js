@@ -31,6 +31,21 @@ const truncate=(string, limit)=>{
     return string
   }
 
+  const getSuggestions=(list,userInput)=> {
+ 
+    let formattedUserInput= userInput.toLowerCase().trim()
+    let userInputLength =formattedUserInput.length
+  
+    return list.filter((translation) => {
+  
+      if ((translation.orginalSentence.substr(0, userInputLength).toLowerCase().trim() === formattedUserInput) || (translation.orginalSentence.substr(0, userInputLength).toLowerCase().trim() === formattedUserInput)  ) {
+        return true
+      } else {
+        return false
+      }
+    })
+  
+    }
 
 
 
@@ -38,5 +53,6 @@ export {
 
     getData, 
     storeData,
-    truncate
+    truncate,
+    getSuggestions
 }
