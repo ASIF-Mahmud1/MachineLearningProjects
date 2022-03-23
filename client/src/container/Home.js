@@ -6,6 +6,7 @@ import Sentence from '../component/home/Sentence';
 import Translation from '../component/home/Translation';
 import { translate } from '../api/translate-api';
 import { Loader,showToast } from '../helper/component/Indicator';
+import {getData, storeData } from '../helper/helper';
 
 const Home=()=>{
     const [language, setLanguage]= useState({
@@ -36,12 +37,40 @@ const Home=()=>{
      
     }
 
+    const handleAddToFavourite =()=>{
+
+        const translationDetails = 
+        {
+            orginalLanguage: language.orginal, 
+            translateLanguage : language.translate, 
+            orginalSentence :  sentence.orginal,
+            translateSentence :  sentence.translate
+        }
+
+        getData('favourite',(data)=>{
+            let result=[]
+
+            if(data)   // already exist in Async
+            {
+              result=[... data]
+              result.push(translationDetails)
+              
+            }
+            else   // create new array of favourite
+            {
+                result.push(translationDetails)
+            }
+
+            storeData('favourite', result)
+        })
+    }
+
     return (
         <View style={styles.container}>
               <Loader loading={loading}/>
               <ConverterCell />     
               <Sentence  sentence={sentence.orginal}  handleParentState= {(feedBack)=> setSentence({...sentence, orginal:feedBack}) } handleTranslate={handleTranslate} />
-              <Translation  translate= {sentence.translate} />
+              <Translation  translate= {sentence.translate} handleAddToFavourite ={handleAddToFavourite}  />
         </View>
      
     )

@@ -1,8 +1,25 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {Text,View, StyleSheet,TouchableOpacity, TextInput, Clipboard} from 'react-native'
 import {  Ionicons ,AntDesign ,MaterialIcons} from '@expo/vector-icons';
+import { showToast } from '../../helper/component/Indicator.js';
+const Translation=({translate, handleAddToFavourite})=>{
+    const handleCopyToClipboard=()=>{
+        if(translate)
+        {
+            Clipboard.setString(translate)
+           
+            showToast("Copied to Clipboard")
+        }
+     
+    }
+    const handleShare=()=>{
+        showToast("This feature is in progress")
+    }
 
-const Translation=({translate})=>{
+    const handleFavourite=()=>{
+        handleAddToFavourite()
+        showToast("Added to Favourite !")
+    }
     return (
         <View style={styles.container}>
             <View style={styles.top} >
@@ -13,14 +30,13 @@ const Translation=({translate})=>{
             </View>
             <TextInput value={translate} placeholder='Translate to English'  multiline={true}  style={styles.input} selectTextOnFocus={false}  editable={false} />
             <View  style={styles.topRight}>
-                   <TouchableOpacity onPress={()=>{Clipboard.setString(translate)}} >
-                      <Ionicons name="copy-outline" size={24} color="black" />
-                      {/* <Ionicons name="copy" size={24} color="black" /> */}
+                   <TouchableOpacity onPress={handleCopyToClipboard} >
+                      <Ionicons name="copy" size={24} color="black" />
                    </TouchableOpacity>
-                   <TouchableOpacity>
+                   <TouchableOpacity  onPress={handleShare}>
                        <AntDesign name="sharealt" size={24} color="black" />
                    </TouchableOpacity>
-                   <TouchableOpacity>
+                   <TouchableOpacity  onPress={handleFavourite}>
                        <MaterialIcons name="favorite-outline" size={24} color="black" />
                        {/* <MaterialIcons name="favorite" size={24} color="black" /> */}
                    </TouchableOpacity>
