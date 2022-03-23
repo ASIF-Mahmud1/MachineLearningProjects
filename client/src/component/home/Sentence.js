@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text,View, StyleSheet,TouchableOpacity, TextInput} from 'react-native'
 import { FontAwesome ,Entypo,AntDesign } from '@expo/vector-icons';
 
-const Sentence=()=>{
+const Sentence=({sentence, handleParentState,handleTranslate})=>{
     return (
         <View style={styles.container}>
             <View style={styles.top} >
@@ -10,16 +10,16 @@ const Sentence=()=>{
                    <Text>French</Text>  
                </View> 
                <View  style={styles.topRight}>
-                   <TouchableOpacity>
+                   <TouchableOpacity onPress={()=>handleParentState('')} >
                        <Entypo name="circle-with-cross" size={24} color="black" />
                    </TouchableOpacity>
-                   <TouchableOpacity>
+                   <TouchableOpacity onPress={handleTranslate} >
                       <Text>Translate</Text>  
                    </TouchableOpacity>
                    
                </View>
             </View>
-            <TextInput  placeholder='Enter Text in French'  multiline={true}  style={styles.input}/>
+            <TextInput value={sentence} onChangeText={handleParentState} placeholder='Enter Text in French'  multiline={true}  style={styles.input}/>
            
         </View>
      

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text,View, StyleSheet,TouchableOpacity, TextInput} from 'react-native'
 import {  Ionicons ,AntDesign ,MaterialIcons} from '@expo/vector-icons';
 
-const Translation=()=>{
+const Translation=({translate})=>{
     return (
         <View style={styles.container}>
             <View style={styles.top} >
@@ -11,7 +11,7 @@ const Translation=()=>{
                </View> 
         
             </View>
-            <TextInput  placeholder='Translate to English'  multiline={true}  style={styles.input} selectTextOnFocus={false}  editable={false} />
+            <TextInput value={translate} placeholder='Translate to English'  multiline={true}  style={styles.input} selectTextOnFocus={false}  editable={false} />
             <View  style={styles.topRight}>
                    <TouchableOpacity>
                       <Ionicons name="copy-outline" size={24} color="black" />
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
        // paddingVertical:60,
       //  color:'white',
         height:100,
-        fontSize:20
+        fontSize:20,
+        color:'red'
      }
 
 })
