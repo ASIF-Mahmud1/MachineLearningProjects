@@ -39,30 +39,40 @@ const Home=()=>{
 
     const handleAddToFavourite =()=>{
 
-        const translationDetails = 
+        if( sentence.orginal &&  sentence.translate )
         {
-            orginalLanguage: language.orginal, 
-            translateLanguage : language.translate, 
-            orginalSentence :  sentence.orginal,
-            translateSentence :  sentence.translate
+
+            const translationDetails =
+            {
+                orginalLanguage: language.orginal,
+                translateLanguage: language.translate,
+                orginalSentence: sentence.orginal,
+                translateSentence: sentence.translate
+            }
+
+            getData('favourite', (data) => {
+                let result = []
+
+                if (data)   // already exist in Async
+                {
+                    result = [...data]
+                    result.push(translationDetails)
+
+                }
+                else   // create new array of favourite
+                {
+                    result.push(translationDetails)
+                }
+
+                storeData('favourite', result)
+            })
         }
 
-        getData('favourite',(data)=>{
-            let result=[]
+        else 
+        {
+            showToast("Cannot save to Favourite")
+        }
 
-            if(data)   // already exist in Async
-            {
-              result=[... data]
-              result.push(translationDetails)
-              
-            }
-            else   // create new array of favourite
-            {
-                result.push(translationDetails)
-            }
-
-            storeData('favourite', result)
-        })
     }
 
     return (
