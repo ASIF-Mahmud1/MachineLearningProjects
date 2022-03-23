@@ -38,7 +38,7 @@ const truncate=(string, limit)=>{
   
     return list.filter((translation) => {
   
-      if ((translation.orginalSentence.substr(0, userInputLength).toLowerCase().trim() === formattedUserInput) || (translation.orginalSentence.substr(0, userInputLength).toLowerCase().trim() === formattedUserInput)  ) {
+      if ((translation.orginalSentence.substr(0, userInputLength).toLowerCase().trim() === formattedUserInput) || (translation.translateSentence.substr(0, userInputLength).toLowerCase().trim() === formattedUserInput)  ) {
         return true
       } else {
         return false
