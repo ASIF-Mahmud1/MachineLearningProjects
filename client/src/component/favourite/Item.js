@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity ,Image} from 'react-native';
 
 import { AntDesign } from '@expo/vector-icons';
-
-export default function Item({details}) {
+import { truncate } from '../../helper/helper';
+export default function Item({details, handleNavigation}) {
   const { orginalLanguage,translateLanguage,orginalSentence,translateSentence} =details
  
 
@@ -12,13 +12,13 @@ export default function Item({details}) {
     <View style={styles.container}>
 
 
-       <TouchableOpacity style={styles.btn}>
+       <TouchableOpacity style={styles.btn} onPress={ handleNavigation  } >
        
        
         <View style={{flexDirection:'row',justifyContent: 'space-between',alignItems:'center'}}>
            <View>
-           <Text style={styles.orginal}>{orginalSentence}</Text>
-        <Text style={styles.translate}>{translateSentence} </Text>
+           <Text style={styles.orginal}>{truncate(orginalSentence,20)}</Text>
+        <Text style={styles.translate}>{truncate(translateSentence,20)} </Text>
         <Text style={styles.category}>{orginalLanguage} to  {translateLanguage} </Text>
            </View>   
 

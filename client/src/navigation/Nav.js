@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Text} from 'react-native'
 import Home from '../container/Home';
 import Favourite from '../container/Favourite';
-
+import SingleFavourite from '../component/favourite/SingleFavourite';
 
 const NewExpense=()=>{
     return <Text>NewExpense</Text>
@@ -15,10 +15,10 @@ const NewExpense=()=>{
 
 const Stack = createNativeStackNavigator();
 
-function HomeStack() {
+function FavouriteStack() {
   return ( <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home}   options={{headerShown:false}}/>
-        <Stack.Screen name="NewExpense" component={NewExpense}   options={{headerShown:false}} />
+        <Stack.Screen name="Favourite" component={Favourite}   options={{headerShown:false}}/>
+        <Stack.Screen name="SingleFavourite" component={SingleFavourite}   options={{headerShown:false}} />
       </Stack.Navigator>
   );
 }
@@ -30,9 +30,9 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="HomeStack">
-        <Drawer.Screen name="HomeStack" component={HomeStack} />
-        <Drawer.Screen name="Favourite" component={Favourite} />
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="FavouriteStack" component={FavouriteStack} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
