@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text,View, StyleSheet,TouchableOpacity, TextInput, Clipboard} from 'react-native'
 import {  Ionicons ,AntDesign ,MaterialIcons} from '@expo/vector-icons';
 import { showToast } from '../../helper/component/Indicator.js';
-const Translation=({translate, handleAddToFavourite})=>{
+const Translation=({language,translate, handleAddToFavourite})=>{
     const handleCopyToClipboard=()=>{
         if(translate)
         {
@@ -24,7 +24,7 @@ const Translation=({translate, handleAddToFavourite})=>{
         <View style={styles.container}>
             <View style={styles.top} >
                <View style={styles.topLeft}>
-                   <Text style={{fontSize:20,fontWeight:'bold',  color:'orange'}}>English</Text>  
+                   <Text style={{fontSize:20,fontWeight:'bold',  color:'orange'}}>{language}</Text>  
                </View> 
         
             </View>

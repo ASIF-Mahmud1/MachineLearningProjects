@@ -96,8 +96,8 @@ const Home=()=>{
         <View style={styles.container}>
               <Loader loading={loading}/>
               <ConverterCell orginal={language.orginal}  translate={language.translate}  handleParentState= {(sentenceType)=>{ setSelectLanguage({language: language[sentenceType],type:sentenceType});  setModalVisible(true) }}   />     
-              <Sentence  sentence={sentence.orginal}  handleParentState= {(feedBack)=> setSentence({...sentence, orginal:feedBack}) } handleTranslate={handleTranslate} />
-              <Translation  translate= {sentence.translate} handleAddToFavourite ={handleAddToFavourite}  />
+              <Sentence language={language.orginal} sentence={sentence.orginal}  handleParentState= {(feedBack)=> setSentence({...sentence, orginal:feedBack}) } handleTranslate={handleTranslate} />
+              <Translation language={language.translate} translate= {sentence.translate} handleAddToFavourite ={handleAddToFavourite}  />
               <ModalPage modalVisible={modalVisible} setModalVisible={setModalVisible} title={"Select Language"} status={selectLanguage.language} handleParentState={( value)=>{setSelectLanguage({...selectLanguage,language:value}) }}  />
         </View>
      

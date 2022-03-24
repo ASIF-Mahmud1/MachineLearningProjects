@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Text,View, StyleSheet,TouchableOpacity, TextInput} from 'react-native'
 import { FontAwesome ,Entypo,AntDesign } from '@expo/vector-icons';
 
-const Sentence=({sentence, handleParentState,handleTranslate})=>{
+const Sentence=({language ,sentence, handleParentState,handleTranslate})=>{
     return (
         <View style={styles.container}>
             <View style={styles.top} >
                <View style={styles.topLeft}>
-                   <Text style={{fontSize:20,fontWeight:'bold',  color:'crimson'}} >French</Text>  
+                   <Text style={{fontSize:20,fontWeight:'bold',  color:'crimson'}} >{language}</Text>  
                </View> 
                <View  style={styles.topRight}>
                    <TouchableOpacity onPress={()=>handleParentState('')} >
