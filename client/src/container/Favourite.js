@@ -31,6 +31,7 @@ const Favourite = ({ navigation }) => {
                     console.log(JSON.stringify(data));
 
                     setFavourite(data)
+                    setSearch(data)
                 }
             })
         }
