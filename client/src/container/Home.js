@@ -28,7 +28,7 @@ const Home=()=>{
     const[modalVisible, setModalVisible] = useState(false)
  
   useEffect(()=>{
- // console.log("here \n",selectLanguage);
+ 
    if(selectLanguage.language!=="" && selectLanguage.type !== "")
    {
      let key= selectLanguage.type
@@ -43,7 +43,7 @@ const Home=()=>{
         const result= await translate(sentence.orginal)
         if(result?.prediction)
         {
-            console.log(sentence.orginal, result);
+           
             setSentence({...sentence, translate: result.prediction})
         }
         else 
@@ -64,7 +64,8 @@ const Home=()=>{
                 orginalLanguage: language.orginal,
                 translateLanguage: language.translate,
                 orginalSentence: sentence.orginal,
-                translateSentence: sentence.translate
+                translateSentence: sentence.translate,
+                id: Date.now() +Math.random()
             }
 
             getData('favourite', (data) => {

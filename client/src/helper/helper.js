@@ -24,6 +24,23 @@ const storeData = async (key, value, callback) => {
     }
 }
 
+const deleteFavourite = async (favouriteId, callback) => {
+    try {
+        const value = await AsyncStorage.getItem("favourite")
+        if (value != null) {
+            const result= (JSON.parse(value)).filter((item)=> item.id !== favouriteId  )
+            storeData("favourite",result)
+            callback(result)
+        }
+        else {
+            callback(null)
+        }
+    } catch (e) {
+        callback(null)
+        console.log('Somethin went wrong', e)
+    }
+}
+
 const truncate=(string, limit)=>{
     if (string.length > limit) {
     return string.substring(0, limit-1) + "...";
@@ -54,5 +71,6 @@ export {
     getData, 
     storeData,
     truncate,
-    getSuggestions
+    getSuggestions,
+    deleteFavourite
 }

@@ -16,7 +16,6 @@ const Favourite = ({ navigation }) => {
 
         let result = getSuggestions(favourite, userInput)
         if (userInput) {
-            console.log(result, '\n', result.length);
             setSearch(result)
         }
         else {
@@ -27,9 +26,8 @@ const Favourite = ({ navigation }) => {
     useEffect(() => {
         if (isFoucsed) {
             getData("favourite", (data) => {
-                if (data) {
-                    console.log(JSON.stringify(data));
-
+                if (data)
+                 {
                     setFavourite(data)
                     setSearch(data)
                 }
@@ -74,7 +72,7 @@ const Favourite = ({ navigation }) => {
 
 
                 {
-                    search.length === 0 && <Text style={styles.text}>No Matching Result Found</Text>
+                    search.length === 0 && <Text style={styles.text}>No Result Found</Text>
                 }
             </ScrollView>
         </View>
@@ -103,11 +101,12 @@ const styles = StyleSheet.create({
         width: 300
     },
     text: {
+        textAlign:'center',
         fontSize: 20,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'black',
+        color: 'grey',
     },
 
 })

@@ -27,13 +27,12 @@ const ModalPage = ({ modalVisible, setModalVisible,title,status,handleParentStat
     const [taskStatus,setTaskStatus]=useState(status)
     useEffect(()=>{
       setTaskStatus(status)
-      console.log('only stat ', status );
+    
      
     },[status])
      useEffect(()=>{
         handleParentState(taskStatus)
-        console.log('taskstatus ', taskStatus );
-       // console.log("in Modal useEffect ", taskStatus);
+   
      },[taskStatus])
 
     return(

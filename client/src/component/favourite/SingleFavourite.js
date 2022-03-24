@@ -3,14 +3,25 @@ import { StyleSheet, Text, View, TouchableOpacity, Clipboard } from 'react-nativ
 
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { showToast } from '../../helper/component/Indicator';
+import { deleteFavourite } from '../../helper/helper';
 export default function SingleFavourite({ route, navigation }) {
-    const { orginalLanguage, translateLanguage, orginalSentence, translateSentence } = route.params.details;
+    const { orginalLanguage, translateLanguage, orginalSentence, translateSentence, id } = route.params.details;
 
     const handleCopyToClipboard=(sentence)=>{
      
             Clipboard.setString(sentence)
            
             showToast("Copied to Clipboard")
+    }
+
+    const handleDelete=()=>{
+        deleteFavourite(id,(data)=>{
+            if(data)
+            {
+                showToast("Deleted Succesfully")
+                navigation.goBack()
+            }
+        })
     }
 
     return (
@@ -57,6 +68,9 @@ export default function SingleFavourite({ route, navigation }) {
 
                     </View>
 
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleDelete} style={{marginTop:20,backgroundColor:'red', borderRadius:8,  height:40,width:150, alignSelf:'center', alignItems:'center', justifyContent:'center'}} >
+                    <Text  style={{color:'white', fontWeight:"bold", fontSize:16}} >Delete</Text>
                 </TouchableOpacity>
             </View>
 
