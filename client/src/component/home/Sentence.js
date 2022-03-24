@@ -7,14 +7,14 @@ const Sentence=({sentence, handleParentState,handleTranslate})=>{
         <View style={styles.container}>
             <View style={styles.top} >
                <View style={styles.topLeft}>
-                   <Text>French</Text>  
+                   <Text style={{fontSize:20,fontWeight:'bold',  color:'crimson'}} >French</Text>  
                </View> 
                <View  style={styles.topRight}>
                    <TouchableOpacity onPress={()=>handleParentState('')} >
                        <Entypo name="circle-with-cross" size={24} color="black" />
                    </TouchableOpacity>
-                   <TouchableOpacity onPress={handleTranslate} >
-                      <Text>Translate</Text>  
+                   <TouchableOpacity onPress={handleTranslate} style={{borderColor:'pink', borderWidth:2, borderRadius:15, padding:10, backgroundColor: 'crimson'}}>
+                      <Text style={{fontSize:15, color: "white", fontWeight:'bold'}} >Translate</Text>  
                    </TouchableOpacity>
                    
                </View>
@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
      topRight:{
          flexDirection:'row',
          flexGrow:1,
-         borderWidth:1,
+     //    borderWidth:1,
          justifyContent:'space-around',
          alignItems:'center'
      },
      input:{
-        borderColor:'#ffa600',
+        borderColor:'crimson',
         borderWidth:2,
         borderRadius:20,
         marginTop:15,

@@ -24,7 +24,7 @@ const Translation=({translate, handleAddToFavourite})=>{
         <View style={styles.container}>
             <View style={styles.top} >
                <View style={styles.topLeft}>
-                   <Text>English</Text>  
+                   <Text style={{fontSize:20,fontWeight:'bold',  color:'orange'}}>English</Text>  
                </View> 
         
             </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
          flexDirection:'row',
          marginVertical:10,
          paddingVertical:10,
-         borderWidth:1,
+       //  borderWidth:1,
          justifyContent:'space-around',
          alignItems:'center'
      },
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
       //  color:'white',
         height:100,
         fontSize:20,
-        color:'red'
+        color:'black',
      }
 
 })
