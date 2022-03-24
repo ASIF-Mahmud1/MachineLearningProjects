@@ -7,9 +7,15 @@ Frontend is a mobile application based on react native. Backend is based on a py
 # Folder Structure
 
 **client** : source code for react native application
+
 **server**: source code for REST-ful application based on Fast API. Training machine learning model along with dataset
 
 ## client
+1. cd client
+
+2. npm install
+
+3. Open a terminal run:  _**npm start**_
 ## server
 ### Run the Application in your machine
  1.  cd *server*
