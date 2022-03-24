@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Text,View, StyleSheet} from 'react-native'
 import { FontAwesome ,Entypo,AntDesign } from '@expo/vector-icons';
 import ConverterCell from '../component/home/ConverterCell';
@@ -7,6 +7,7 @@ import Translation from '../component/home/Translation';
 import { translate } from '../api/translate-api';
 import { Loader,showToast } from '../helper/component/Indicator';
 import {getData, storeData } from '../helper/helper';
+import ModalPage from '../helper/component/Modal';
 
 const Home=()=>{
     const [language, setLanguage]= useState({
@@ -20,6 +21,9 @@ const Home=()=>{
     })
 
     const[loading,setLoading]=useState(false)
+    const [selectLanguage,setSelectLanguage] = useState('')
+    const[modalVisible, setModalVisible] = useState(false)
+ 
 
     const handleTranslate= async()=>{
         setLoading(true)
@@ -74,13 +78,15 @@ const Home=()=>{
         }
 
     }
+    
 
     return (
         <View style={styles.container}>
               <Loader loading={loading}/>
-              <ConverterCell />     
+              <ConverterCell  handleParentState= {(lang)=>{  setSelectLanguage(lang) ;setModalVisible(true) }}   />     
               <Sentence  sentence={sentence.orginal}  handleParentState= {(feedBack)=> setSentence({...sentence, orginal:feedBack}) } handleTranslate={handleTranslate} />
               <Translation  translate= {sentence.translate} handleAddToFavourite ={handleAddToFavourite}  />
+              <ModalPage modalVisible={modalVisible} setModalVisible={setModalVisible} title={"Select Language"} status={selectLanguage} handleParentState={()=>{}}  />
         </View>
      
     )

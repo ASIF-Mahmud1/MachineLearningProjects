@@ -3,23 +3,22 @@ import { Text, View, StyleSheet,TouchableOpacity } from 'react-native'
 import { FontAwesome, Entypo, AntDesign } from '@expo/vector-icons';
 
 
-const ConverterCell = () => {
+const ConverterCell = ({ handleParentState}) => {
     return (
         <View style={styles.container} >
             <View style={styles.cell}>
                 <Text>French</Text>
-                <TouchableOpacity>
+                <TouchableOpacity  onPress={()=>handleParentState("French")} >
                    <AntDesign name="caretdown" size={24}  style={styles.icon} />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.cell}>
-              
                 <AntDesign name="retweet" size={24} color="black" style={styles.icon}  />
             </View>
             <View style={styles.cell}>
                 <Text>English</Text>
-                <TouchableOpacity>
+                <TouchableOpacity  onPress={()=>handleParentState("English")} >
                    <AntDesign name="caretdown"  style={styles.icon}  />
                 </TouchableOpacity>
             </View>
