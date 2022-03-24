@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet,TouchableOpacity } from 'react-native'
 import { FontAwesome, Entypo, AntDesign } from '@expo/vector-icons';
+import { translate } from '../../api/translate-api';
 
 
 const ConverterCell = ({ handleParentState}) => {
@@ -8,7 +9,7 @@ const ConverterCell = ({ handleParentState}) => {
         <View style={styles.container} >
             <View style={styles.cell}>
                 <Text>French</Text>
-                <TouchableOpacity  onPress={()=>handleParentState("French")} >
+                <TouchableOpacity  onPress={()=>handleParentState("orginal")} >
                    <AntDesign name="caretdown" size={24}  style={styles.icon} />
                 </TouchableOpacity>
             </View>
@@ -18,7 +19,7 @@ const ConverterCell = ({ handleParentState}) => {
             </View>
             <View style={styles.cell}>
                 <Text>English</Text>
-                <TouchableOpacity  onPress={()=>handleParentState("English")} >
+                <TouchableOpacity  onPress={()=>handleParentState("translate")} >
                    <AntDesign name="caretdown"  style={styles.icon}  />
                 </TouchableOpacity>
             </View>

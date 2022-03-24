@@ -21,9 +21,15 @@ const Home=()=>{
     })
 
     const[loading,setLoading]=useState(false)
-    const [selectLanguage,setSelectLanguage] = useState('')
+    const [selectLanguage,setSelectLanguage] = useState({
+        type: ''  , // orignal or translate
+        language: ''  // english, french ...
+     })
     const[modalVisible, setModalVisible] = useState(false)
  
+  useEffect(()=>{
+  console.log("here \n",selectLanguage);
+  },[selectLanguage])
 
     const handleTranslate= async()=>{
         setLoading(true)
@@ -78,15 +84,14 @@ const Home=()=>{
         }
 
     }
-    
 
     return (
         <View style={styles.container}>
               <Loader loading={loading}/>
-              <ConverterCell  handleParentState= {(lang)=>{  setSelectLanguage(lang) ;setModalVisible(true) }}   />     
+              <ConverterCell  handleParentState= {(sentenceType)=>{ setSelectLanguage({...selectLanguage,type:sentenceType});  setModalVisible(true) }}   />     
               <Sentence  sentence={sentence.orginal}  handleParentState= {(feedBack)=> setSentence({...sentence, orginal:feedBack}) } handleTranslate={handleTranslate} />
               <Translation  translate= {sentence.translate} handleAddToFavourite ={handleAddToFavourite}  />
-              <ModalPage modalVisible={modalVisible} setModalVisible={setModalVisible} title={"Select Language"} status={selectLanguage} handleParentState={()=>{}}  />
+              <ModalPage modalVisible={modalVisible} setModalVisible={setModalVisible} title={"Select Language"} status={selectLanguage.language} handleParentState={( value)=>{setSelectLanguage({...selectLanguage,language:value}) }}  />
         </View>
      
     )
