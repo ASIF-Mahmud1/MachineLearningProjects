@@ -12,11 +12,11 @@ It is a mobile application that lets you translate sentences from French to Engl
 3.  Save your sentences as Favorite
 
 
-## [Demo Video Link]()
+## [Demo Video Link](https://drive.google.com/file/d/1ZQTahEQCH7c_j1VpYj9C68fYlwexCHVB/view?usp=sharing)
 
 A video recording of the application can be seen, by clicking on the link above.  
 
-# [](https://github.com/ASIF-Mahmud1/shopping-cart#to-run-the-app)To Run the App
+# []()To Run the App
 
 1. clone the repository
 
