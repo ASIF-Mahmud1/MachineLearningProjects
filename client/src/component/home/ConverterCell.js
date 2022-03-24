@@ -4,11 +4,11 @@ import { FontAwesome, Entypo, AntDesign } from '@expo/vector-icons';
 import { translate } from '../../api/translate-api';
 
 
-const ConverterCell = ({ handleParentState}) => {
+const ConverterCell = ({ orginal,translate,handleParentState}) => {
     return (
         <View style={styles.container} >
             <View style={styles.cell}>
-                <Text>French</Text>
+                <Text>{orginal}</Text>
                 <TouchableOpacity  onPress={()=>handleParentState("orginal")} >
                    <AntDesign name="caretdown" size={24}  style={styles.icon} />
                 </TouchableOpacity>
@@ -18,7 +18,7 @@ const ConverterCell = ({ handleParentState}) => {
                 <AntDesign name="retweet" size={24} color="black" style={styles.icon}  />
             </View>
             <View style={styles.cell}>
-                <Text>English</Text>
+                <Text>{translate}</Text>
                 <TouchableOpacity  onPress={()=>handleParentState("translate")} >
                    <AntDesign name="caretdown"  style={styles.icon}  />
                 </TouchableOpacity>
