@@ -2,14 +2,11 @@ import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {Text} from 'react-native'
 import Home from '../container/Home';
 import Favourite from '../container/Favourite';
 import SingleFavourite from '../component/favourite/SingleFavourite';
 
-const NewExpense=()=>{
-    return <Text>NewExpense</Text>
-}
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,7 +29,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="FavouriteStack" component={FavouriteStack} />
+        <Drawer.Screen name="Favourites" component={FavouriteStack} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
