@@ -35,7 +35,7 @@ Hope this helps!
   
 
     conda create --prefix ./machine ipython matplotlib
-
+    conda env create --file environment.yml --prefix ./env
   
 
 ## 3. **Initialze a kernel to use in jupyter**
@@ -79,6 +79,7 @@ conda env remove --prefix ./machine
   
 
     conda activate /Users/learn/Desktop/Projects/machine-translation/machine-learning/.env
+    conda activate /Users/learn/Desktop/Projects/machine-translation/server/env
 
 ###
   
